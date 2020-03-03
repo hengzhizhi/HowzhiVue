@@ -1,6 +1,10 @@
 <template>
   <div class="index">
-    
+
+
+
+
+
   </div>
 </template>
 
@@ -9,7 +13,7 @@ export default {
   name: 'index',
   data () {
     return {
-      
+
     }
   }
 }
