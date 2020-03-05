@@ -6,25 +6,18 @@ import course from "../components/course";
 import footer from "../components/footer";
 import login from "../components/login";
 import index from "../components/index";
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name:'index',
+      name: 'index',
       component: index
-//       components: {
-// banner
-//
-//         //     banner,
-//         // recommend,
-//         // course,
-//         // footer
-//       }
     },
     {
-      name:'login',
+      name: 'login',
       path: '/login',
       component: login
     }

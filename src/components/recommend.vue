@@ -9,20 +9,7 @@
       </div>
       <div class="grid">
 
-        <figure  class="effect-zoe" >
-          <img  class="img-rounded" src="static/img/14.jpg"
-                alt="通用的占位符缩略图" >
-          <figcaption>
-            <h2>Creative <span>Zoe</span></h2>
-            <span class="icon-heart"></span>
-            <span class="icon-eye"></span>
-            <span class="icon-paper-clip"></span>
-            <p>Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p>
-            <a href="http://www.lanrentuku.com/" target="_blank">View more</a>
-          </figcaption>
-        </figure>
-
-        <figure class="effect-zoe" >
+        <figure class="effect-zoe">
           <img class="img-rounded" src="static/img/14.jpg"
                alt="通用的占位符缩略图">
           <figcaption>
@@ -36,7 +23,20 @@
         </figure>
 
         <figure class="effect-zoe">
-          <img class="img-rounded"src="static/img/14.jpg"
+          <img class="img-rounded" src="static/img/14.jpg"
+               alt="通用的占位符缩略图">
+          <figcaption>
+            <h2>Creative <span>Zoe</span></h2>
+            <span class="icon-heart"></span>
+            <span class="icon-eye"></span>
+            <span class="icon-paper-clip"></span>
+            <p>Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p>
+            <a href="http://www.lanrentuku.com/" target="_blank">View more</a>
+          </figcaption>
+        </figure>
+
+        <figure class="effect-zoe">
+          <img class="img-rounded" src="static/img/14.jpg"
                alt="通用的占位符缩略图">
           <figcaption>
             <h2>Creative <span>Zoe</span></h2>
@@ -55,12 +55,12 @@
 </template>
 
 <script>
-export default {
-  name: 'recommend',
-  data () {
+  export default {
+    name: 'recommend',
+    data() {
 
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

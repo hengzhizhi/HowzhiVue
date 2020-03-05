@@ -12,12 +12,12 @@
 </template>
 
 <script>
-export default {
-  name: 'login',
-  data () {
+  export default {
+    name: 'login',
+    data() {
 
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

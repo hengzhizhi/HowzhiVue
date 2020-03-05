@@ -13,7 +13,6 @@
     </div>
 
 
-
     <v-footer></v-footer>
   </div>
 
@@ -24,21 +23,18 @@
   import recommend from "./recommend.vue";
   import course from "./course.vue";
   import footer from "./footer.vue";
-  export default {
-    data(){
-      return{
 
-      }
+  export default {
+    data() {
+      return {}
     },
-    components:{
-      'v-banner':banner,
-      "v-recommend":recommend,
-      "v-course":course,
-      "v-footer":footer
+    components: {
+      'v-banner': banner,
+      "v-recommend": recommend,
+      "v-course": course,
+      "v-footer": footer
     }
   };
-
-
 
 
 </script>

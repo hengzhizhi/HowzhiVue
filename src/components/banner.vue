@@ -86,12 +86,12 @@
 </template>
 
 <script>
-export default {
-  name: 'banner',
-  data () {
+  export default {
+    name: 'banner',
+    data() {
 
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
