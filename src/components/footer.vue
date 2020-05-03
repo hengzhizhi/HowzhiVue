@@ -1,6 +1,6 @@
 <template>
-  <div class="footer col-md-12 column">
-    <div class="copyright">
+  <div class="footer " style="margin-top: 30px" >
+    <div class="copyright col-md-12 column container">
       <div class="copyright_c">
         <div class="copyright_head">
           <div class="copyright_L">
@@ -79,7 +79,12 @@
 
 <script>
   export default {
-    name: "footer"
+    name: "footer",
+    data () {
+      return {
+
+      }
+  }
   }
 </script>
 
@@ -106,6 +111,7 @@
   .copyright {
     padding-top: 79px;
     border-top: 1px solid #ededed;
+    color: aqua;
   }
 
   .copyright_c {

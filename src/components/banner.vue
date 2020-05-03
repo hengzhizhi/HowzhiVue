@@ -4,50 +4,25 @@
     <div class="row clearfix " style="margin-top: 10px">
       <!--侧边二级菜单-->
       <div class="col-md-3 column ">
-        <ul class="list-group">
-
-          <a class="list-group-item"><h5 class="bg-black">前沿 / 区块链 / 人工智能</h5></a>
-          <a class="list-group-item"><h5>前端 / 小程序 / JS</h5></a>
-          <a class="list-group-item"><h5>后端 / JAVA / Python</h5></a>
-          <a class="list-group-item"><h5>移动 / Android / iOS</h5></a>
-          <a class="list-group-item"><h5>云计算 / 大数据 / 容器</h5></a>
-          <a class="list-group-item"><h5>运维 / 测试 / 数据库</h5></a>
-          <a class="list-group-item"><h5> UI设计 / 3D动画 / 游戏</h5></a>
-
+        <ul class="list-group" >
+             <li v-for="(type,index) in typeList"><a class="list-group-item"><h5>{{type.name}}</h5></a></li>
         </ul>
       </div>
-      <!-- 轮播图-->
-      <div class="col-md-9 column">
-        <div id="myCarousel" class="carousel slide ">
-          <!-- 轮播（Carousel）指标 -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
 
-          <!-- 轮播（Carousel）项目 -->
-          <div class="carousel-inner ">
-            <div class="item active">
-              <img src="/static/img/banner01.jpg" alt="First slide">
-            </div>
-            <div class="item">
-              <img src="/static/img/banner02.jpg" alt="Second slide">
-            </div>
-            <div class="item">
-              <img src="/static/img/banner03.jpg" alt="Third slide">
-            </div>
-          </div>
-          <!-- 轮播（Carousel）导航 -->
-          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+
+      <div class="col-md-9 column">
+      <div class="banner carousel slide">
+        <div class="item">
+          <img :src="dataList[currentIndex].photoUrl" style="width: 100%;height: 100%">
         </div>
+        <div class="page" style="position:absolute; z-index:2; right:10%; bottom:10px" v-if="this.dataList.length > 1">
+          <ul class="list-unstyled list-inline num" >
+            <li @click="gotoPage(prevIndex)">&lt;</li>
+            <li v-for="(item,index) in dataList" @click="gotoPage(index)"  :class="{'current':currentIndex == index}">  {{index+1}}</li>
+            <li @click="gotoPage(nextIndex)">&gt;</li>
+          </ul>
+        </div>
+      </div>
         <!-- 模块简介图标-->
         <div id="block" class="list-group list-group-horizontal center-block">
           <a href="#" class="list-group-item col-md-3 column" style="text-align: center">
@@ -79,7 +54,6 @@
 
       </div>
 
-
     </div>
 
   </div>
@@ -89,13 +63,85 @@
   export default {
     name: 'banner',
     data() {
+      return {
+        banners: [],
+        typeList: [],
 
+        dataList:[],
+        currentIndex: 0,   //默认显示图片
+        timer: null   //定时器
+      }
+    },
+    computed:{
+      //上一张
+      prevIndex() {
+        if(this.currentIndex == 0) {
+          return this.dataList.length - 1;
+        }else{
+          return this.currentIndex - 1;
+        }
+      },
+      //下一张
+      nextIndex() {
+        if(this.currentIndex == this.dataList.length - 1) {
+          return 0;
+        }else {
+          return this.currentIndex + 1;
+        }
+      },
+      runInv() {
+        this.timer = setInterval(() => {
+          this.gotoPage(this.nextIndex)
+        }, 1000)
+      },
+    },
+    created() {
+      this.getBanner(),
+      this.getTypeList();
+    },
+    methods: {
+
+      getBanner: function () {
+        this.$http.post("http://localhost:8088/carousel/selectAll").then(
+          function (ret) {
+            this.dataList = ret.body;
+            console.log(ret);
+          }
+        )
+      },
+      gotoPage(index) {
+        this.currentIndex = index;
+      },
+      //定时器
+      runInv() {
+        this.timer = setInterval(() => {
+          this.gotoPage(this.nextIndex)
+        }, 1000)
+      },
+      getTypeList: function () {
+        this.$http.post("http://localhost:8088/course/selectTypes").then(
+          function (ret) {
+            this.typeList = ret.body;
+            console.log(ret);
+          }
+        )
+      },
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  /*轮播标签*/
+  .num {
+    /*color: black;*/
+    cursor:Pointer ;
+    font-weight: bold;
+    font-size: 10px;
+  }
+.current{
+  font-size: 15px;
+}
   .list-group-horizontal .list-group-item {
     display: inline-block;
   }

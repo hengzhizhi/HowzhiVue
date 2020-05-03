@@ -1,9 +1,10 @@
 <template>
-  <div class="index col-md-12 column">
+  <div class="index container ">
+
     <v-banner></v-banner>
     <div class="panel panel-default">
 
-      <div class="panel-body">
+      <div class="panel-body ">
         <v-recommend></v-recommend>
 
 
@@ -11,9 +12,6 @@
 
       </div>
     </div>
-
-
-    <v-footer></v-footer>
   </div>
 
 </template>
@@ -29,7 +27,7 @@
       return {}
     },
     components: {
-      'v-banner': banner,
+      "v-banner": banner,
       "v-recommend": recommend,
       "v-course": course,
       "v-footer": footer
